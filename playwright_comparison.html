@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playwright: Fixture vs POM vs POM + Fixture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f1117;
+    color: #e2e8f0;
+    line-height: 1.6;
+    padding: 40px 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    color: #f8fafc;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 48px;
+  }
+
+  /* DEFINITIONS */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 16px;
+  }
+
+  .defs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .def-card {
+    background: #1a1f2e;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .def-card .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .tag-purple { background: #2d1f5e; color: #a78bfa; }
+  .tag-teal   { background: #0d3d35; color: #34d399; }
+  .tag-amber  { background: #3d2a00; color: #fbbf24; }
+
+  .def-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+  }
+
+  .def-card p {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+
+  .def-card ul {
+    margin-top: 10px;
+    padding-left: 16px;
+    font-size: 13px;
+    color: #94a3b8;
+  }
+
+  .def-card ul li { margin-bottom: 4px; }
+
+  /* CODE COMPARISON */
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .col {
+    background: #1a1f2e;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .col-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .col-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 4px;
+  }
+
+  .col-header p {
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  .col-body { padding: 16px; }
+
+  .file-label {
+    font-size: 11px;
+    color: #475569;
+    margin: 12px 0 4px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  .file-label:first-child { margin-top: 0; }
+
+  pre {
+    background: #0d1117;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 11.5px;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    line-height: 1.7;
+    overflow-x: auto;
+    color: #e2e8f0;
+    white-space: pre;
+  }
+
+  /* Syntax colors */
+  .kw  { color: #c792ea; }
+  .fn  { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .cm  { color: #546e7a; font-style: italic; }
+  .cls { color: #ffcb6b; }
+  .pun { color: #89ddff; }
+
+  .verdict {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .verdict-purple { background: #1e1040; color: #c4b5fd; border-left: 3px solid #7c3aed; }
+  .verdict-teal   { background: #062924; color: #6ee7b7; border-left: 3px solid #059669; }
+  .verdict-amber  { background: #261900; color: #fde68a; border-left: 3px solid #d97706; }
+
+  /* BOTTOM TABLE */
+  .table-wrap {
+    margin-top: 56px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: #1a1f2e;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1a1f2e;
+    color: #cbd5e1;
+    vertical-align: top;
+  }
+
+  tr:hover td { background: #141929; }
+
+  .yes { color: #34d399; font-weight: 600; }
+  .no  { color: #f87171; font-weight: 600; }
+  .partial { color: #fbbf24; font-weight: 600; }
+
+  .row-label { color: #94a3b8; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<h1>Playwright Login — 3 Approaches</h1>
+<p class="subtitle">Fixture only &nbsp;·&nbsp; POM only &nbsp;·&nbsp; POM + Fixture combined</p>
+
+<!-- DEFINITIONS -->
+<div class="section-label">What each one is</div>
+<div class="defs">
+  <div class="def-card">
+    <span class="tag tag-purple">Fixture</span>
+    <h3>Auto-running setup</h3>
+    <p>A block of code that runs automatically before (and after) a test — but only for tests that request it by name in their parameters.</p>
+    <ul>
+      <li>Has setup AND teardown</li>
+      <li>Tied to test lifecycle</li>
+      <li>Reusable across all test files</li>
+      <li>Selectors written inline</li>
+    </ul>
+  </div>
+  <div class="def-card">
+    <span class="tag tag-teal">POM</span>
+    <h3>Page Object Model</h3>
+    <p>A class that wraps all the selectors and actions for a specific page. You call its methods manually inside your test.</p>
+    <ul>
+      <li>No auto-run — you call it</li>
+      <li>Selectors in one clean place</li>
+      <li>Easy to update if UI changes</li>
+      <li>No teardown built in</li>
+    </ul>
+  </div>
+  <div class="def-card">
+    <span class="tag tag-amber">POM + Fixture</span>
+    <h3>Best of both</h3>
+    <p>The fixture handles auto setup/teardown. Inside the fixture, it uses the POM class to perform the login — so selectors stay clean and the test stays simple.</p>
+    <ul>
+      <li>Auto setup via fixture</li>
+      <li>Clean selectors via POM</li>
+      <li>Test file stays minimal</li>
+      <li>Most scalable approach</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CODE COMPARISON -->
+<div class="section-label">Side by side code</div>
+<div class="comparison">
+
+  <!-- FIXTURE ONLY -->
+  <div class="col">
+    <div class="col-header">
+      <span class="tag tag-purple" style="margin-bottom:8px;display:inline-block">Fixture only</span>
+      <h2>No POM</h2>
+      <p>Login logic lives directly inside the fixture</p>
+    </div>
+    <div class="col-body">
+      <div class="file-label">📄 fixtures/index.ts</div>
+      <pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
+
+    <span class="cm">// SETUP — written inline here</span>
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> page.<span class="fn">fill</span>(
+      <span class="str">'input[type="email"]'</span>,
+      <span class="str">'user@test.com'</span>
+    );
+    <span class="kw">await</span> page.<span class="fn">fill</span>(
+      <span class="str">'input[type="password"]'</span>,
+      <span class="str">'pass123'</span>
+    );
+    <span class="kw">await</span> page.<span class="fn">click</span>(
+      <span class="str">'button[type="submit"]'</span>
+    );
+    <span class="kw">await</span> page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+
+    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs here</span>
+
+    <span class="kw">await</span> page.<span class="fn">close</span>(); <span class="cm">// teardown</span>
+  }
+});</pre>
+
+      <div class="file-label">📄 tests/dashboard.spec.ts</div>
+      <pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ loggedInPage }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre>
+
+      <div class="verdict verdict-purple">
+        Selectors are hardcoded inside fixture. If the login page UI changes, you update the fixture directly. Works fine for small projects.
+      </div>
+    </div>
+  </div>
+
+  <!-- POM ONLY -->
+  <div class="col">
+    <div class="col-header">
+      <span class="tag tag-teal" style="margin-bottom:8px;display:inline-block">POM only</span>
+      <h2>No Fixture</h2>
+      <p>Login lives in a class, called manually every test</p>
+    </div>
+    <div class="col-body">
+      <div class="file-label">📄 pages/LoginPage.ts</div>
+      <pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(
+    <span class="kw">private</span> page: <span class="cls">Page</span>
+  ) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(
+    email: <span class="kw">string</span>,
+    pass: <span class="kw">string</span>
+  ) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
+      <span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
+      <span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(
+      <span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page
+      .<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre>
+
+      <div class="file-label">📄 tests/dashboard.spec.ts</div>
+      <pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ page }) => {
+    <span class="kw">const</span> loginPage =
+      <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+
+    <span class="cm">// you call this manually every test</span>
+    <span class="kw">await</span> loginPage.<span class="fn">login</span>(
+      <span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+
+    <span class="kw">await</span> <span class="fn">expect</span>(page)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre>
+
+      <div class="verdict verdict-teal">
+        Selectors are clean and reusable. But you must call login() manually in every test that needs it. No auto teardown.
+      </div>
+    </div>
+  </div>
+
+  <!-- POM + FIXTURE -->
+  <div class="col">
+    <div class="col-header">
+      <span class="tag tag-amber" style="margin-bottom:8px;display:inline-block">POM + Fixture</span>
+      <h2>Combined</h2>
+      <p>POM handles selectors, Fixture handles auto setup</p>
+    </div>
+    <div class="col-body">
+      <div class="file-label">📄 pages/LoginPage.ts</div>
+      <pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(
+    <span class="kw">private</span> page: <span class="cls">Page</span>
+  ) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(
+    email: <span class="kw">string</span>,
+    pass: <span class="kw">string</span>
+  ) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
+      <span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
+      <span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(
+      <span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page
+      .<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre>
+
+      <div class="file-label">📄 fixtures/index.ts</div>
+      <pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
+
+    <span class="cm">// fixture uses POM to login</span>
+    <span class="kw">const</span> loginPage =
+      <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+    <span class="kw">await</span> loginPage.<span class="fn">login</span>(
+      <span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+
+    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs</span>
+
+    <span class="kw">await</span> page.<span class="fn">close</span>(); <span class="cm">// teardown</span>
+  }
+});</pre>
+
+      <div class="file-label">📄 tests/dashboard.spec.ts</div>
+      <pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ loggedInPage }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre>
+
+      <div class="verdict verdict-amber">
+        Best of both. Selectors in POM, auto setup/teardown in fixture, test file stays clean. Most scalable for large projects.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="table-wrap">
+  <div class="section-label" style="margin-bottom:16px">Quick comparison</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:28%">Feature</th>
+        <th>Fixture only</th>
+        <th>POM only</th>
+        <th>POM + Fixture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label">Auto setup before test</td>
+        <td class="yes">Yes</td>
+        <td class="no">No — manual</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Auto teardown after test</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Selectors in one place</td>
+        <td class="no">No — inline</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Test file stays clean</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Reusable across files</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Easy to update if UI changes</td>
+        <td class="partial">Partial</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-label">Best for</td>
+        <td>Small projects</td>
+        <td>Medium projects</td>
+        <td>Large / enterprise</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
