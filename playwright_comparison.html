@@ -31,7 +31,6 @@
     margin-bottom: 48px;
   }
 
-  /* DEFINITIONS */
   .section-label {
     font-size: 11px;
     font-weight: 600;
@@ -41,6 +40,7 @@
     margin-bottom: 16px;
   }
 
+  /* DEFINITIONS */
   .defs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -55,7 +55,7 @@
     padding: 20px;
   }
 
-  .def-card .tag {
+  .tag {
     display: inline-block;
     font-size: 11px;
     font-weight: 600;
@@ -68,115 +68,224 @@
   .tag-teal   { background: #0d3d35; color: #34d399; }
   .tag-amber  { background: #3d2a00; color: #fbbf24; }
 
-  .def-card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #f1f5f9;
-    margin-bottom: 8px;
-  }
-
-  .def-card p {
-    font-size: 13px;
-    color: #94a3b8;
-    line-height: 1.7;
-  }
-
-  .def-card ul {
-    margin-top: 10px;
-    padding-left: 16px;
-    font-size: 13px;
-    color: #94a3b8;
-  }
-
+  .def-card h3 { font-size: 16px; font-weight: 600; color: #f1f5f9; margin-bottom: 8px; }
+  .def-card p  { font-size: 13px; color: #94a3b8; line-height: 1.7; }
+  .def-card ul { margin-top: 10px; padding-left: 16px; font-size: 13px; color: #94a3b8; }
   .def-card ul li { margin-bottom: 4px; }
 
-  /* CODE COMPARISON */
-  .comparison {
+  /* TOGGLE BUTTON */
+  .layout-btn {
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #1a1f2e;
+    color: #7dd3fc;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .layout-btn:hover { background: #1e2a3a; border-color: #3b82f6; }
+
+  /* VERTICAL LAYOUT — row-based grid for alignment */
+  #vertical-view {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    gap: 0 16px;
   }
 
-  .col {
-    background: #1a1f2e;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    overflow: hidden;
+  /* Each row spans all 3 cols as siblings — we use .v-row wrapper */
+  .v-row {
+    display: contents; /* children participate in parent grid */
   }
 
   .col-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid #1e293b;
+    padding: 14px 16px;
+    background: #1a1f2e;
+    border: 1px solid #1e293b;
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
   }
 
-  .col-header h2 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #f1f5f9;
-    margin-bottom: 4px;
-  }
-
-  .col-header p {
-    font-size: 12px;
-    color: #64748b;
-  }
-
-  .col-body { padding: 16px; }
+  .col-header h2 { font-size: 15px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
+  .col-header p  { font-size: 12px; color: #94a3b8; }
 
   .file-label {
     font-size: 11px;
-    color: #475569;
-    margin: 12px 0 4px;
+    color: #7dd3fc;
+    padding: 10px 16px 4px;
     font-family: 'Cascadia Code', 'Fira Code', monospace;
+    background: #1a1f2e;
+    border-left: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    margin: 0;
   }
 
-  .file-label:first-child { margin-top: 0; }
+  .pre-wrap {
+    background: #1a1f2e;
+    border-left: 1px solid #1e293b;
+    border-right: 1px solid #1e293b;
+    padding: 0 12px 12px;
+  }
 
   pre {
-    background: #0d1117;
-    border: 1px solid #1e293b;
+    background: #111827;
+    border: 1px solid #243044;
     border-radius: 8px;
     padding: 14px;
-    font-size: 11.5px;
+    font-size: 11px;
     font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
     line-height: 1.7;
     overflow-x: auto;
     color: #e2e8f0;
     white-space: pre;
+    margin: 0;
   }
 
-  /* Syntax colors */
-  .kw  { color: #c792ea; }
-  .fn  { color: #82aaff; }
-  .str { color: #c3e88d; }
-  .cm  { color: #546e7a; font-style: italic; }
-  .cls { color: #ffcb6b; }
-  .pun { color: #89ddff; }
-
   .verdict {
-    margin-top: 14px;
+    padding: 12px 16px;
+    background: #1a1f2e;
+    border: 1px solid #1e293b;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .verdict-inner {
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 12px;
     line-height: 1.6;
   }
-
   .verdict-purple { background: #1e1040; color: #c4b5fd; border-left: 3px solid #7c3aed; }
   .verdict-teal   { background: #062924; color: #6ee7b7; border-left: 3px solid #059669; }
   .verdict-amber  { background: #261900; color: #fde68a; border-left: 3px solid #d97706; }
 
-  /* BOTTOM TABLE */
-  .table-wrap {
-    margin-top: 56px;
+  /* HORIZONTAL LAYOUT */
+  #horizontal-view {
+    display: none;
   }
 
-  table {
+  .h-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+
+  .h-table th {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .h-table th.th-file { 
+    width: 170px; 
+    text-align: left;
+    color: #475569;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .h-table td.td-file {
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .h-table th.th-fixture { background: #2d1f5e; color: #a78bfa; }
+  .h-table th.th-pom     { background: #0d3d35; color: #34d399; }
+  .h-table th.th-both    { background: #3d2a00; color: #fbbf24; }
+
+  .td-file-inner {
+    font-size: 11px;
+    color: #7dd3fc;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    padding-right: 12px;
+    white-space: nowrap;
+  }
+
+  .h-table td {
+    padding: 0 8px;
+    vertical-align: stretch;
+  }
+
+  .h-table tr {
+    display: grid;
+    grid-template-columns: 170px 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: stretch;
+    margin-bottom: 12px;
+  }
+
+  .h-table thead tr {
+    margin-bottom: 4px;
+  }
+
+  .h-table td, .h-table th {
+    display: block;
+  }
+
+  .h-table tbody tr td {
+    height: 100%;
+  }
+
+  .h-cell {
+    background: #1a1f2e;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 12px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .h-cell pre {
+    margin: 0;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 11px;
+    flex: 1;
+  }
+
+  .h-empty {
+    background: #0d1117;
+    border: 1px dashed #1e293b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2d3748;
+    font-size: 12px;
+    font-style: italic;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* SYNTAX */
+  .kw  { color: #c792ea; }
+  .fn  { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .cm  { color: #546e7a; font-style: italic; }
+  .cls { color: #ffcb6b; }
+
+  /* BOTTOM TABLE */
+  .table-wrap { margin-top: 56px; }
+
+  .cmp-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
   }
 
-  th {
+  .cmp-table th {
     background: #1a1f2e;
     color: #94a3b8;
     font-weight: 600;
@@ -184,21 +293,21 @@
     padding: 12px 16px;
     text-align: left;
     border-bottom: 1px solid #1e293b;
+    border-radius: 0;
   }
 
-  td {
+  .cmp-table td {
     padding: 12px 16px;
     border-bottom: 1px solid #1a1f2e;
     color: #cbd5e1;
     vertical-align: top;
   }
 
-  tr:hover td { background: #141929; }
+  .cmp-table tr:hover td { background: #141929; }
 
   .yes { color: #34d399; font-weight: 600; }
   .no  { color: #f87171; font-weight: 600; }
   .partial { color: #fbbf24; font-weight: 600; }
-
   .row-label { color: #94a3b8; font-weight: 500; }
 </style>
 </head>
@@ -245,171 +354,248 @@
   </div>
 </div>
 
-<!-- CODE COMPARISON -->
-<div class="section-label">Side by side code</div>
-<div class="comparison">
+<!-- SECTION HEADER + TOGGLE -->
+<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+  <div class="section-label" style="margin-bottom:0">Side by side code</div>
+  <button class="layout-btn" id="layout-toggle" onclick="toggleLayout()">
+    <svg id="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>
+    </svg>
+    <span id="toggle-label">Switch to Horizontal</span>
+  </button>
+</div>
 
-  <!-- FIXTURE ONLY -->
-  <div class="col">
+<!-- VERTICAL VIEW — row based for alignment -->
+<div id="vertical-view">
+
+  <!-- ROW 1: Headers -->
+  <div class="v-row">
     <div class="col-header">
-      <span class="tag tag-purple" style="margin-bottom:8px;display:inline-block">Fixture only</span>
+      <span class="tag tag-purple">Fixture only</span>
       <h2>No POM</h2>
       <p>Login logic lives directly inside the fixture</p>
     </div>
-    <div class="col-body">
-      <div class="file-label">📄 fixtures/index.ts</div>
-      <pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
-  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
-
-    <span class="cm">// SETUP — written inline here</span>
-    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
-    <span class="kw">await</span> page.<span class="fn">fill</span>(
-      <span class="str">'input[type="email"]'</span>,
-      <span class="str">'user@test.com'</span>
-    );
-    <span class="kw">await</span> page.<span class="fn">fill</span>(
-      <span class="str">'input[type="password"]'</span>,
-      <span class="str">'pass123'</span>
-    );
-    <span class="kw">await</span> page.<span class="fn">click</span>(
-      <span class="str">'button[type="submit"]'</span>
-    );
-    <span class="kw">await</span> page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
-
-    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs here</span>
-
-    <span class="kw">await</span> page.<span class="fn">close</span>(); <span class="cm">// teardown</span>
-  }
-});</pre>
-
-      <div class="file-label">📄 tests/dashboard.spec.ts</div>
-      <pre>test(<span class="str">'dashboard loads'</span>,
-  <span class="kw">async</span> ({ loggedInPage }) => {
-    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
-      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
-});</pre>
-
-      <div class="verdict verdict-purple">
-        Selectors are hardcoded inside fixture. If the login page UI changes, you update the fixture directly. Works fine for small projects.
-      </div>
-    </div>
-  </div>
-
-  <!-- POM ONLY -->
-  <div class="col">
     <div class="col-header">
-      <span class="tag tag-teal" style="margin-bottom:8px;display:inline-block">POM only</span>
+      <span class="tag tag-teal">POM only</span>
       <h2>No Fixture</h2>
       <p>Login lives in a class, called manually every test</p>
     </div>
-    <div class="col-body">
-      <div class="file-label">📄 pages/LoginPage.ts</div>
-      <pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
-  <span class="fn">constructor</span>(
-    <span class="kw">private</span> page: <span class="cls">Page</span>
-  ) {}
-
-  <span class="kw">async</span> <span class="fn">login</span>(
-    email: <span class="kw">string</span>,
-    pass: <span class="kw">string</span>
-  ) {
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
-      <span class="str">'input[type="email"]'</span>, email);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
-      <span class="str">'input[type="password"]'</span>, pass);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(
-      <span class="str">'button[type="submit"]'</span>);
-    <span class="kw">await</span> <span class="kw">this</span>.page
-      .<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
-  }
-}</pre>
-
-      <div class="file-label">📄 tests/dashboard.spec.ts</div>
-      <pre>test(<span class="str">'dashboard loads'</span>,
-  <span class="kw">async</span> ({ page }) => {
-    <span class="kw">const</span> loginPage =
-      <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
-
-    <span class="cm">// you call this manually every test</span>
-    <span class="kw">await</span> loginPage.<span class="fn">login</span>(
-      <span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
-
-    <span class="kw">await</span> <span class="fn">expect</span>(page)
-      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
-});</pre>
-
-      <div class="verdict verdict-teal">
-        Selectors are clean and reusable. But you must call login() manually in every test that needs it. No auto teardown.
-      </div>
-    </div>
-  </div>
-
-  <!-- POM + FIXTURE -->
-  <div class="col">
     <div class="col-header">
-      <span class="tag tag-amber" style="margin-bottom:8px;display:inline-block">POM + Fixture</span>
+      <span class="tag tag-amber">POM + Fixture</span>
       <h2>Combined</h2>
       <p>POM handles selectors, Fixture handles auto setup</p>
     </div>
-    <div class="col-body">
-      <div class="file-label">📄 pages/LoginPage.ts</div>
-      <pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
-  <span class="fn">constructor</span>(
-    <span class="kw">private</span> page: <span class="cls">Page</span>
-  ) {}
+  </div>
 
-  <span class="kw">async</span> <span class="fn">login</span>(
-    email: <span class="kw">string</span>,
-    pass: <span class="kw">string</span>
-  ) {
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
-      <span class="str">'input[type="email"]'</span>, email);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(
-      <span class="str">'input[type="password"]'</span>, pass);
-    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(
-      <span class="str">'button[type="submit"]'</span>);
-    <span class="kw">await</span> <span class="kw">this</span>.page
-      .<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
-  }
-}</pre>
+  <!-- ROW 2: fixtures/index.ts label -->
+  <div class="v-row">
+    <div class="file-label">📄 fixtures/index.ts</div>
+    <div class="file-label" style="color:#2d3748; font-style:italic;">— not used —</div>
+    <div class="file-label">📄 fixtures/index.ts</div>
+  </div>
 
-      <div class="file-label">📄 fixtures/index.ts</div>
-      <pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <!-- ROW 3: fixtures/index.ts code -->
+  <div class="v-row">
+    <div class="pre-wrap"><pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
   <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
-
-    <span class="cm">// fixture uses POM to login</span>
-    <span class="kw">const</span> loginPage =
-      <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
-    <span class="kw">await</span> loginPage.<span class="fn">login</span>(
-      <span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
-
-    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs</span>
-
+    <span class="cm">// SETUP — written inline here</span>
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, <span class="str">'user@test.com'</span>);
+    <span class="kw">await</span> page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs here</span>
     <span class="kw">await</span> page.<span class="fn">close</span>(); <span class="cm">// teardown</span>
   }
-});</pre>
+});</pre></div>
+    <div class="pre-wrap" style="background:#0d1117; border-left:1px dashed #1e293b; border-right:1px dashed #1e293b;"></div>
+    <div class="pre-wrap"><pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
+    <span class="cm">// fixture uses POM to login</span>
+    <span class="kw">const</span> lp = <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+    <span class="kw">await</span> lp.<span class="fn">login</span>(<span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> <span class="fn">use</span>(page); <span class="cm">// test runs</span>
+    <span class="kw">await</span> page.<span class="fn">close</span>(); <span class="cm">// teardown</span>
+  }
+});</pre></div>
+  </div>
 
-      <div class="file-label">📄 tests/dashboard.spec.ts</div>
-      <pre>test(<span class="str">'dashboard loads'</span>,
+  <!-- ROW 4: pages/LoginPage.ts label -->
+  <div class="v-row">
+    <div class="file-label" style="color:#2d3748; font-style:italic;">— not used —</div>
+    <div class="file-label">📄 pages/LoginPage.ts</div>
+    <div class="file-label">📄 pages/LoginPage.ts</div>
+  </div>
+
+  <!-- ROW 5: pages/LoginPage.ts code -->
+  <div class="v-row">
+    <div class="pre-wrap" style="background:#0d1117; border-left:1px dashed #1e293b; border-right:1px dashed #1e293b;"></div>
+    <div class="pre-wrap"><pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(<span class="kw">private</span> page: <span class="cls">Page</span>) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(email: <span class="kw">string</span>, pass: <span class="kw">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre></div>
+    <div class="pre-wrap"><pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(<span class="kw">private</span> page: <span class="cls">Page</span>) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(email: <span class="kw">string</span>, pass: <span class="kw">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre></div>
+  </div>
+
+  <!-- ROW 6: tests/dashboard.spec.ts label -->
+  <div class="v-row">
+    <div class="file-label">📄 tests/dashboard.spec.ts</div>
+    <div class="file-label">📄 tests/dashboard.spec.ts</div>
+    <div class="file-label">📄 tests/dashboard.spec.ts</div>
+  </div>
+
+  <!-- ROW 7: tests/dashboard.spec.ts code -->
+  <div class="v-row">
+    <div class="pre-wrap"><pre>test(<span class="str">'dashboard loads'</span>,
   <span class="kw">async</span> ({ loggedInPage }) => {
     <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
       .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
-});</pre>
-
-      <div class="verdict verdict-amber">
-        Best of both. Selectors in POM, auto setup/teardown in fixture, test file stays clean. Most scalable for large projects.
-      </div>
-    </div>
+});</pre></div>
+    <div class="pre-wrap"><pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ page }) => {
+    <span class="kw">const</span> lp = <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+    <span class="cm">// call manually every test</span>
+    <span class="kw">await</span> lp.<span class="fn">login</span>(<span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre></div>
+    <div class="pre-wrap"><pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ loggedInPage }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre></div>
   </div>
 
+  <!-- ROW 8: Verdicts -->
+  <div class="v-row">
+    <div class="verdict"><div class="verdict-inner verdict-purple">Selectors are hardcoded inside fixture. If the login page UI changes, you update the fixture directly. Works fine for small projects.</div></div>
+    <div class="verdict"><div class="verdict-inner verdict-teal">Selectors are clean and reusable. But you must call login() manually in every test that needs it. No auto teardown.</div></div>
+    <div class="verdict"><div class="verdict-inner verdict-amber">Best of both. Selectors in POM, auto setup/teardown in fixture, test file stays clean. Most scalable for large projects.</div></div>
+  </div>
+
+</div>
+
+<!-- HORIZONTAL VIEW -->
+<div id="horizontal-view">
+  <table class="h-table">
+    <thead>
+      <tr>
+        <th class="th-file">File</th>
+        <th class="th-fixture">Fixture only</th>
+        <th class="th-pom">POM only</th>
+        <th class="th-both">POM + Fixture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-file"><div class="td-file-inner">📄 fixtures/index.ts</div></td>
+        <td>
+          <div class="h-cell"><pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
+    <span class="cm">// SETUP inline</span>
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, <span class="str">'user@test.com'</span>);
+    <span class="kw">await</span> page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+    <span class="kw">await</span> <span class="fn">use</span>(page);
+    <span class="kw">await</span> page.<span class="fn">close</span>();
+  }
+});</pre></div>
+        </td>
+        <td><div class="h-empty">not used</div></td>
+        <td>
+          <div class="h-cell"><pre><span class="kw">const</span> test = base.<span class="fn">extend</span>({
+  <span class="fn">loggedInPage</span>: <span class="kw">async</span> ({ page }, use) => {
+    <span class="cm">// uses POM to login</span>
+    <span class="kw">const</span> lp = <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+    <span class="kw">await</span> lp.<span class="fn">login</span>(<span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> <span class="fn">use</span>(page);
+    <span class="kw">await</span> page.<span class="fn">close</span>();
+  }
+});</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-file"><div class="td-file-inner">📄 pages/LoginPage.ts</div></td>
+        <td><div class="h-empty">not used</div></td>
+        <td>
+          <div class="h-cell"><pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(<span class="kw">private</span> page: <span class="cls">Page</span>) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(email: <span class="kw">string</span>, pass: <span class="kw">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre></div>
+        </td>
+        <td>
+          <div class="h-cell"><pre><span class="kw">export class</span> <span class="cls">LoginPage</span> {
+  <span class="fn">constructor</span>(<span class="kw">private</span> page: <span class="cls">Page</span>) {}
+
+  <span class="kw">async</span> <span class="fn">login</span>(email: <span class="kw">string</span>, pass: <span class="kw">string</span>) {
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">goto</span>(<span class="str">'/login'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="email"]'</span>, email);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">fill</span>(<span class="str">'input[type="password"]'</span>, pass);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">click</span>(<span class="str">'button[type="submit"]'</span>);
+    <span class="kw">await</span> <span class="kw">this</span>.page.<span class="fn">waitForURL</span>(<span class="str">'/dashboard'</span>);
+  }
+}</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-file"><div class="td-file-inner">📄 tests/dashboard.spec.ts</div></td>
+        <td>
+          <div class="h-cell"><pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ loggedInPage }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre></div>
+        </td>
+        <td>
+          <div class="h-cell"><pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ page }) => {
+    <span class="kw">const</span> lp = <span class="kw">new</span> <span class="cls">LoginPage</span>(page);
+    <span class="cm">// call manually every test</span>
+    <span class="kw">await</span> lp.<span class="fn">login</span>(<span class="str">'user@test.com'</span>, <span class="str">'pass123'</span>);
+    <span class="kw">await</span> <span class="fn">expect</span>(page).<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre></div>
+        </td>
+        <td>
+          <div class="h-cell"><pre>test(<span class="str">'dashboard loads'</span>,
+  <span class="kw">async</span> ({ loggedInPage }) => {
+    <span class="kw">await</span> <span class="fn">expect</span>(loggedInPage)
+      .<span class="fn">toHaveURL</span>(<span class="str">'/dashboard'</span>);
+});</pre></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- COMPARISON TABLE -->
 <div class="table-wrap">
   <div class="section-label" style="margin-bottom:16px">Quick comparison</div>
-  <table>
+  <table class="cmp-table">
     <thead>
       <tr>
         <th style="width:28%">Feature</th>
@@ -422,7 +608,7 @@
       <tr>
         <td class="row-label">Auto setup before test</td>
         <td class="yes">Yes</td>
-        <td class="no">No — manual</td>
+        <td class="no">No - manual</td>
         <td class="yes">Yes</td>
       </tr>
       <tr>
@@ -433,7 +619,7 @@
       </tr>
       <tr>
         <td class="row-label">Selectors in one place</td>
-        <td class="no">No — inline</td>
+        <td class="no">No - inline</td>
         <td class="yes">Yes</td>
         <td class="yes">Yes</td>
       </tr>
@@ -465,5 +651,29 @@
   </table>
 </div>
 
+<script>
+let isHorizontal = false;
+
+function toggleLayout() {
+  const vView = document.getElementById('vertical-view');
+  const hView = document.getElementById('horizontal-view');
+  const icon  = document.getElementById('toggle-icon');
+  const label = document.getElementById('toggle-label');
+
+  isHorizontal = !isHorizontal;
+
+  if (isHorizontal) {
+    vView.style.display = 'none';
+    hView.style.display = 'block';
+    label.textContent = 'Switch to Vertical';
+    icon.innerHTML = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+  } else {
+    vView.style.display = 'grid';
+    hView.style.display = 'none';
+    label.textContent = 'Switch to Horizontal';
+    icon.innerHTML = '<rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>';
+  }
+}
+</script>
 </body>
 </html>
