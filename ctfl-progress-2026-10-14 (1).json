@@ -1,0 +1,535 @@
+{
+ "topics": {
+  "1.1.2": {
+   "understood": true,
+   "passed": true
+  },
+  "1.1.1": {
+   "understood": true,
+   "passed": true
+  },
+  "1.2.1": {
+   "understood": true,
+   "passed": true
+  },
+  "1.2.2": {
+   "understood": true,
+   "passed": true
+  },
+  "1.2.3": {
+   "understood": true,
+   "passed": true
+  },
+  "1.3": {
+   "understood": true,
+   "passed": true
+  },
+  "1.4.1": {
+   "understood": true,
+   "passed": true
+  },
+  "1.4.2": {
+   "understood": true,
+   "passed": true
+  },
+  "1.4.3": {
+   "understood": true,
+   "passed": true
+  },
+  "1.4.4": {
+   "understood": true,
+   "passed": true
+  },
+  "1.4.5": {
+   "understood": true,
+   "passed": true
+  },
+  "1.5.1": {
+   "understood": true,
+   "passed": true
+  },
+  "1.5.2": {
+   "understood": true,
+   "passed": true
+  },
+  "1.5.3": {
+   "understood": true,
+   "passed": true
+  }
+ },
+ "answers": [
+  {
+   "qid": "L-1.1.2-01",
+   "lo": "FL-1.1.2",
+   "ok": true,
+   "ts": 1791976867384,
+   "ctx": "lesson",
+   "session": "lesson-1.1.2"
+  },
+  {
+   "qid": "L-1.1.2-02",
+   "lo": "FL-1.1.2",
+   "ok": true,
+   "ts": 1791976892323,
+   "ctx": "lesson",
+   "session": "lesson-1.1.2"
+  },
+  {
+   "qid": "L-1.1.2-03",
+   "lo": "FL-1.1.2",
+   "ok": false,
+   "ts": 1791976968502,
+   "ctx": "lesson",
+   "session": "lesson-1.1.2"
+  },
+  {
+   "qid": "B-1.1.2-01",
+   "lo": "FL-1.1.2",
+   "ok": true,
+   "ts": 1791977029519,
+   "ctx": "lesson",
+   "session": "lesson-1.1.2"
+  },
+  {
+   "qid": "L-1.1.1-01",
+   "lo": "FL-1.1.1",
+   "ok": true,
+   "ts": 1791979894249,
+   "ctx": "lesson",
+   "session": "lesson-1.1.1"
+  },
+  {
+   "qid": "L-1.1.1-02",
+   "lo": "FL-1.1.1",
+   "ok": true,
+   "ts": 1791979916472,
+   "ctx": "lesson",
+   "session": "lesson-1.1.1"
+  },
+  {
+   "qid": "L-1.1.1-03",
+   "lo": "FL-1.1.1",
+   "ok": false,
+   "ts": 1791979936784,
+   "ctx": "lesson",
+   "session": "lesson-1.1.1"
+  },
+  {
+   "qid": "B-1.1.1-09",
+   "lo": "FL-1.1.1",
+   "ok": true,
+   "ts": 1791979991704,
+   "ctx": "lesson",
+   "session": "lesson-1.1.1"
+  },
+  {
+   "qid": "L-1.2.1-01",
+   "lo": "FL-1.2.1",
+   "ok": true,
+   "ts": 1791980617532,
+   "ctx": "lesson",
+   "session": "lesson-1.2.1"
+  },
+  {
+   "qid": "L-1.2.1-02",
+   "lo": "FL-1.2.1",
+   "ok": true,
+   "ts": 1791980641509,
+   "ctx": "lesson",
+   "session": "lesson-1.2.1"
+  },
+  {
+   "qid": "L-1.2.1-03",
+   "lo": "FL-1.2.1",
+   "ok": true,
+   "ts": 1791980677772,
+   "ctx": "lesson",
+   "session": "lesson-1.2.1"
+  },
+  {
+   "qid": "L-1.2.2-01",
+   "lo": "FL-1.2.2",
+   "ok": true,
+   "ts": 1791983934044,
+   "ctx": "lesson",
+   "session": "lesson-1.2.2"
+  },
+  {
+   "qid": "L-1.2.2-02",
+   "lo": "FL-1.2.2",
+   "ok": true,
+   "ts": 1791983944668,
+   "ctx": "lesson",
+   "session": "lesson-1.2.2"
+  },
+  {
+   "qid": "L-1.2.2-03",
+   "lo": "FL-1.2.2",
+   "ok": true,
+   "ts": 1791983955972,
+   "ctx": "lesson",
+   "session": "lesson-1.2.2"
+  },
+  {
+   "qid": "L-1.2.3-01",
+   "lo": "FL-1.2.3",
+   "ok": true,
+   "ts": 1791984208139,
+   "ctx": "lesson",
+   "session": "lesson-1.2.3"
+  },
+  {
+   "qid": "L-1.2.3-02",
+   "lo": "FL-1.2.3",
+   "ok": true,
+   "ts": 1791984228787,
+   "ctx": "lesson",
+   "session": "lesson-1.2.3"
+  },
+  {
+   "qid": "L-1.2.3-03",
+   "lo": "FL-1.2.3",
+   "ok": true,
+   "ts": 1791985323075,
+   "ctx": "lesson",
+   "session": "lesson-1.2.3"
+  },
+  {
+   "qid": "L-1.3-01",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985730304,
+   "ctx": "lesson",
+   "session": "lesson-1.3"
+  },
+  {
+   "qid": "L-1.3-02",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985744168,
+   "ctx": "lesson",
+   "session": "lesson-1.3"
+  },
+  {
+   "qid": "L-1.3-03",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985759280,
+   "ctx": "lesson",
+   "session": "lesson-1.3"
+  },
+  {
+   "qid": "B-1.3.1-07",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985822047,
+   "ctx": "more",
+   "session": "more-1.3-1791985822047"
+  },
+  {
+   "qid": "B-1.3.1-16",
+   "lo": "FL-1.3.1",
+   "ok": false,
+   "ts": 1791985843895,
+   "ctx": "more",
+   "session": "more-1.3-1791985843895"
+  },
+  {
+   "qid": "B-1.3.1-03",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985882919,
+   "ctx": "more",
+   "session": "more-1.3-1791985882919"
+  },
+  {
+   "qid": "B-1.3.1-08",
+   "lo": "FL-1.3.1",
+   "ok": true,
+   "ts": 1791985960022,
+   "ctx": "more",
+   "session": "more-1.3-1791985960022"
+  },
+  {
+   "qid": "B-1.3.1-01",
+   "lo": "FL-1.3.1",
+   "ok": false,
+   "ts": 1791985986654,
+   "ctx": "more",
+   "session": "more-1.3-1791985986654"
+  },
+  {
+   "qid": "L-1.4.1-01",
+   "lo": "FL-1.4.1",
+   "ok": true,
+   "ts": 1791994308339,
+   "ctx": "lesson",
+   "session": "lesson-1.4.1"
+  },
+  {
+   "qid": "L-1.4.1-02",
+   "lo": "FL-1.4.1",
+   "ok": true,
+   "ts": 1791994329395,
+   "ctx": "lesson",
+   "session": "lesson-1.4.1"
+  },
+  {
+   "qid": "L-1.4.1-03",
+   "lo": "FL-1.4.1",
+   "ok": true,
+   "ts": 1791994352779,
+   "ctx": "lesson",
+   "session": "lesson-1.4.1"
+  },
+  {
+   "qid": "L-1.4.2-01",
+   "lo": "FL-1.4.2",
+   "ok": true,
+   "ts": 1791994540514,
+   "ctx": "lesson",
+   "session": "lesson-1.4.2"
+  },
+  {
+   "qid": "L-1.4.2-02",
+   "lo": "FL-1.4.2",
+   "ok": true,
+   "ts": 1791994549362,
+   "ctx": "lesson",
+   "session": "lesson-1.4.2"
+  },
+  {
+   "qid": "L-1.4.2-03",
+   "lo": "FL-1.4.2",
+   "ok": true,
+   "ts": 1791994573355,
+   "ctx": "lesson",
+   "session": "lesson-1.4.2"
+  },
+  {
+   "qid": "L-1.4.3-01",
+   "lo": "FL-1.4.3",
+   "ok": false,
+   "ts": 1791996476178,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "L-1.4.3-02",
+   "lo": "FL-1.4.3",
+   "ok": true,
+   "ts": 1791996489273,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "L-1.4.3-03",
+   "lo": "FL-1.4.3",
+   "ok": false,
+   "ts": 1791996510585,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "G-1.4.3-1",
+   "lo": "FL-1.4.3",
+   "ok": false,
+   "ts": 1791996678592,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "G-1.4.3-2",
+   "lo": "FL-1.4.3",
+   "ok": false,
+   "ts": 1791996699496,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "B-1.4.3-01",
+   "lo": "FL-1.4.3",
+   "ok": true,
+   "ts": 1791996714688,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "B-1.4.3-05",
+   "lo": "FL-1.4.3",
+   "ok": true,
+   "ts": 1791996750912,
+   "ctx": "lesson",
+   "session": "lesson-1.4.3"
+  },
+  {
+   "qid": "L-1.4.4-01",
+   "lo": "FL-1.4.4",
+   "ok": true,
+   "ts": 1791997094294,
+   "ctx": "lesson",
+   "session": "lesson-1.4.4"
+  },
+  {
+   "qid": "L-1.4.4-02",
+   "lo": "FL-1.4.4",
+   "ok": true,
+   "ts": 1791997138510,
+   "ctx": "lesson",
+   "session": "lesson-1.4.4"
+  },
+  {
+   "qid": "L-1.4.4-03",
+   "lo": "FL-1.4.4",
+   "ok": true,
+   "ts": 1791997246237,
+   "ctx": "lesson",
+   "session": "lesson-1.4.4"
+  },
+  {
+   "qid": "L-1.4.5-01",
+   "lo": "FL-1.4.5",
+   "ok": true,
+   "ts": 1791997402797,
+   "ctx": "lesson",
+   "session": "lesson-1.4.5"
+  },
+  {
+   "qid": "L-1.4.5-02",
+   "lo": "FL-1.4.5",
+   "ok": true,
+   "ts": 1791997422541,
+   "ctx": "lesson",
+   "session": "lesson-1.4.5"
+  },
+  {
+   "qid": "L-1.4.5-03",
+   "lo": "FL-1.4.5",
+   "ok": true,
+   "ts": 1791997472093,
+   "ctx": "lesson",
+   "session": "lesson-1.4.5"
+  },
+  {
+   "qid": "L-1.5.1-01",
+   "lo": "FL-1.5.1",
+   "ok": true,
+   "ts": 1791997864819,
+   "ctx": "lesson",
+   "session": "lesson-1.5.1"
+  },
+  {
+   "qid": "L-1.5.1-02",
+   "lo": "FL-1.5.1",
+   "ok": true,
+   "ts": 1791997896618,
+   "ctx": "lesson",
+   "session": "lesson-1.5.1"
+  },
+  {
+   "qid": "L-1.5.1-03",
+   "lo": "FL-1.5.1",
+   "ok": true,
+   "ts": 1791997945987,
+   "ctx": "lesson",
+   "session": "lesson-1.5.1"
+  },
+  {
+   "qid": "L-1.5.2-01",
+   "lo": "FL-1.5.2",
+   "ok": true,
+   "ts": 1791998169954,
+   "ctx": "lesson",
+   "session": "lesson-1.5.2"
+  },
+  {
+   "qid": "L-1.5.2-02",
+   "lo": "FL-1.5.2",
+   "ok": true,
+   "ts": 1791998358777,
+   "ctx": "lesson",
+   "session": "lesson-1.5.2"
+  },
+  {
+   "qid": "L-1.5.2-03",
+   "lo": "FL-1.5.2",
+   "ok": true,
+   "ts": 1791998368265,
+   "ctx": "lesson",
+   "session": "lesson-1.5.2"
+  },
+  {
+   "qid": "L-1.5.3-01",
+   "lo": "FL-1.5.3",
+   "ok": true,
+   "ts": 1791999601738,
+   "ctx": "lesson",
+   "session": "lesson-1.5.3"
+  },
+  {
+   "qid": "L-1.5.3-02",
+   "lo": "FL-1.5.3",
+   "ok": true,
+   "ts": 1791999614994,
+   "ctx": "lesson",
+   "session": "lesson-1.5.3"
+  },
+  {
+   "qid": "L-1.5.3-03",
+   "lo": "FL-1.5.3",
+   "ok": true,
+   "ts": 1791999629241,
+   "ctx": "lesson",
+   "session": "lesson-1.5.3"
+  }
+ ],
+ "attempts": [],
+ "decks": {},
+ "recent": [],
+ "weak": {
+  "L-1.1.2-03": {
+   "streak": 0,
+   "lastSession": "lesson-1.1.2"
+  },
+  "L-1.1.1-03": {
+   "streak": 0,
+   "lastSession": "lesson-1.1.1"
+  },
+  "B-1.3.1-16": {
+   "streak": 0,
+   "lastSession": "more-1.3-1791985843895"
+  },
+  "B-1.3.1-01": {
+   "streak": 0,
+   "lastSession": "more-1.3-1791985986654"
+  },
+  "L-1.4.3-01": {
+   "streak": 0,
+   "lastSession": "lesson-1.4.3"
+  },
+  "L-1.4.3-03": {
+   "streak": 0,
+   "lastSession": "lesson-1.4.3"
+  },
+  "G-1.4.3-1": {
+   "streak": 0,
+   "lastSession": "lesson-1.4.3"
+  },
+  "G-1.4.3-2": {
+   "streak": 0,
+   "lastSession": "lesson-1.4.3"
+  }
+ },
+ "retired": [],
+ "notes": [
+  {
+   "cheat": false,
+   "topic": "1.2.2",
+   "kind": "note",
+   "text": "Testing is Corrective. QA is Preventive",
+   "id": "tfjmws1o4k4q",
+   "ts": 1791980843498
+  }
+ ],
+ "cheatAdds": {}
+}
