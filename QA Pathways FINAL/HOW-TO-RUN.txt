@@ -1,0 +1,34 @@
+QA Pathways - Windows
+=====================
+
+1. Use the QA-Pathways folder (already unzipped in Learning Platform\release, or unzip
+   QA-Pathways-Windows.zip anywhere). Do not run it from inside the zip.
+2. Double-click QA-Pathways.exe (tip: right-click > Send to > Desktop (create shortcut))
+   - First time only: Windows may show "Windows protected your PC" because the app
+     is not code-signed. Click "More info" -> "Run anyway".
+3. Your browser opens at http://127.0.0.1:47321 - that's the app.
+   A small black window stays open; keep it open while studying, close it to stop.
+
+It uses the same address as CTFL Prep, so your CTFL Prep progress in that browser is
+brought in automatically the first time. If CTFL Prep is still running, QA Pathways
+closes it first.
+
+Updates: new versions are written straight into the "app" folder next to the exe.
+The open page shows "QA Pathways was updated - Reload now"; click it. No unzipping, no restart.
+If the launcher itself changes, the update arrives as QA-Pathways.new.exe and replaces the
+exe automatically the next time you start it.
+
+Paths included: ISTQB Foundation (CTFL), API Testing with Postman, UI Automation with Playwright, Database Testing with SQL.
+
+Adding a learning path: put its .lpp.js file in the "courses" folder next to the exe
+and reload the page. A newer version of a built-in path replaces the built-in one.
+
+Official ISTQB files: put syllabus.pdf and questions.json in the "istqb" folder next to
+the exe (see istqb\README.txt). Lessons then link to the syllabus page and Mock tests offer
+ISTQB Sample Exams A-D. Exam dates come from pstb.pk while the app runs (internet needed
+for that card only; the last result is remembered).
+
+Install as an app (works offline): in Chrome or Edge, use "Install QA Pathways" from the
+address bar or the browser menu while the app is open.
+
+No Node.js, no installation. Internet is only used for PSTB exam dates.

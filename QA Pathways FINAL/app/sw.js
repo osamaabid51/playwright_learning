@@ -1,0 +1,5 @@
+const V='qap-ddd9fafe42',F=["./", "index.html", "engine.js", "app.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "vendor/pdf.min.mjs", "vendor/pdf.worker.min.mjs", "vendor/mingo.min.js", "vendor/sql-wasm-inline.js", "courses/ctfl.lpp.js", "courses/api.lpp.js", "courses/pw.lpp.js", "courses/sql.lpp.js"];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin||u.pathname.includes('/__lp/')||u.pathname.endsWith('/version.json')||u.pathname.includes('/istqb/')||u.pathname.includes('/pstb-api/'))return;
+e.respondWith(fetch(e.request,{cache:'no-store'}).then(n=>{if(n.ok){const c=n.clone();caches.open(V).then(x=>x.put(e.request,c))}return n}).catch(()=>caches.match(e.request,{ignoreSearch:true})))});
